@@ -1,0 +1,9 @@
+1001;telefon;50.0;fÃ¶r att ringa
+1002;dator;60.0;surfa
+1001;telefon;50.0;ringa
+1002;dator;60.0;surfa
+1001;nintendo switch;40.0;spelkonsol
+1002;dell;40.0;dator
+1003;legoflower;80.0;lego
+1004;doglife;20.0;hundmat
+1005;cola;10.0;LÃ¤sk
