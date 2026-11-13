@@ -29,7 +29,7 @@ public class ProductFileStorage implements ProductStorage {
 
             );
         } catch (IOException e) {
-            System.out.println("Kunde inte spara produkten" + e.getMessage());
+            throw new RuntimeException("Kunde inte spara produkten.", e);
         }
     }
 
@@ -60,7 +60,6 @@ public class ProductFileStorage implements ProductStorage {
                 String[] parts = line.split(";", -1);
 
                 if (parts.length != 4) {
-                    System.out.println("Felaktig produktrad; " + line);
                     continue;
                 }
 
@@ -73,7 +72,7 @@ public class ProductFileStorage implements ProductStorage {
             }
 
         } catch (IOException e) {
-            System.out.println("Kunde inte läsa produkterna: " + e.getMessage());
+            throw new RuntimeException("Kunde inte läsa produkterna.", e);
         }
 
         return products;

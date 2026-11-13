@@ -1,6 +1,7 @@
 package se.iths.katherine.webshop;
 
 //Importerar Product för att använda klassen här nu.
+
 import se.iths.katherine.webshop.model.Product;
 //Importerar List för att hantera en lista med produkter.
 import java.util.List;

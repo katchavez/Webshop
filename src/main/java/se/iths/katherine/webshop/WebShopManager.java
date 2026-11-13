@@ -67,13 +67,24 @@ public class WebShopManager {
                 Product product = new Product(articleNumber, title, price, description);
 
                 //Produkt sparas.
-                saveProductToStorage(product);
-                outInputHandler.info("Produkten har sparats!");
-
+                try {
+                    saveProductToStorage(product);
+                    outInputHandler.info("Produkten har sparats!");
+                } catch (RuntimeException e) {
+                    outInputHandler.info(e.getMessage());
+                }
+                //Alt 2: visa alla produkter
             } else if (choice.equals("2")) {
 
                 //Hämtar alla produkter från lagringen.
-                List<Product> products = getProductsFromStorage();
+                List<Product> products;
+
+                try {
+                    products = getProductsFromStorage();
+                } catch (RuntimeException e) {
+                    outInputHandler.info(e.getMessage());
+                    continue;
+                }
 
                 //Går igenom alla produkter i listan.
                 for (Product product : products) {
@@ -97,15 +108,22 @@ public class WebShopManager {
                 String articleNumber = outInputHandler.prompt("Mata in artikelnummer: ");
 
                 //Hämtar produkten.
-                Product product = getProductFromStorage(articleNumber);
+                Product foundProduct;
+
+                try {
+                    foundProduct = getProductFromStorage(articleNumber);
+                } catch (RuntimeException e) {
+                    outInputHandler.info(e.getMessage());
+                    continue;
+                }
 
                 //Kontrollerar om produkten hittades.
-                if (product != null) {
+                if (foundProduct != null) {
                     //Skriver ut produktens info.
-                    outInputHandler.info("Artikelnummer: " + product.getArticleNumber());
-                    outInputHandler.info("title: " + product.getTitle());
-                    outInputHandler.info("Pris: " + product.getPrice());
-                    outInputHandler.info("Beskrivning: " + product.getDescription());
+                    outInputHandler.info("Artikelnummer: " + foundProduct.getArticleNumber());
+                    outInputHandler.info("title: " + foundProduct.getTitle());
+                    outInputHandler.info("Pris: " + foundProduct.getPrice());
+                    outInputHandler.info("Beskrivning: " + foundProduct.getDescription());
                 } else {
                     outInputHandler.info("Produkten hittades inte!");
                 }
