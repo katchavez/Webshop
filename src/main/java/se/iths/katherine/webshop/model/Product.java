@@ -56,7 +56,7 @@ public class Product {
 
     //Sedan omvandlas texten från fil till nytt Product objekt.
     public static Product fromFileLine(String line) {
-        String[] parts = line.split(";");
+        String[] parts = line.split(";", -1);
 
         String articleNumber = parts[0];
         String title = parts[1];

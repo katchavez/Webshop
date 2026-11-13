@@ -5,7 +5,7 @@ import se.iths.katherine.webshop.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-//Lagrar produkt i textfil
+//Testlagring som sparar produkter i en lista
 public class ProductListStorage implements ProductStorage {
 
     //Lista som håller produkterna under denna test.

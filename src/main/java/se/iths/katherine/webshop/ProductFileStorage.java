@@ -2,9 +2,9 @@ package se.iths.katherine.webshop;
 
 import se.iths.katherine.webshop.model.Product;
 
-import java.nio.file.Path;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +50,26 @@ public class ProductFileStorage implements ProductStorage {
 
             //Går igenom varje rad i filen.
             for (String line : lines) {
+
+                //Ändring jag lagt till för att den ska hoppa över tomma rader.
+                if (line.isBlank()) {
+                    continue;
+                }
+
+                //Kontroll om raden innehåller fyra delar.
+                String[] parts = line.split(";", -1);
+
+                if (parts.length != 4) {
+                    System.out.println("Felaktig produktrad; " + line);
+                    continue;
+                }
+
                 //GÖr om text till Product-objekt och lägger till produkten i lista.
-                products.add(Product.fromFileLine(line));
+                try {
+                    products.add(Product.fromFileLine(line));
+                } catch (NumberFormatException e) {
+                    continue;
+                }
             }
 
         } catch (IOException e) {

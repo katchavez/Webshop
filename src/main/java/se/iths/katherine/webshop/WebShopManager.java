@@ -1,12 +1,11 @@
 package se.iths.katherine.webshop;
 
-import se.iths.katherine.webshop.model.Product;
-
-import java.util.List;
-
 import se.iths.katherine.webshop.model.Discount;
 import se.iths.katherine.webshop.model.HalfPriceDiscount;
+import se.iths.katherine.webshop.model.Product;
 import se.iths.katherine.webshop.model.TenPercentDiscount;
+
+import java.util.List;
 
 public class WebShopManager {
 
